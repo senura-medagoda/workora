@@ -1,0 +1,18 @@
+# Secrets
+.env
+
+# Java / Maven
+backend/target/
+*.log
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+
+# Frontend (later)
+node_modules/
+dist/
+
+# OS
+.DS_Store

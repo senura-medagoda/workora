@@ -1,0 +1,8 @@
+spring:
+  docker:
+    compose:
+      lifecycle-management: start_only   # starts the DB, leaves it running when the app stops
+
+logging:
+  level:
+    com.workora: DEBUG
