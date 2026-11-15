@@ -1,4 +1,4 @@
-package workora_api;
+package com.workora;
 
 import org.springframework.boot.SpringApplication;
 
