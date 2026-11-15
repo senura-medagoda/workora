@@ -1,4 +1,4 @@
-package workora_api;
+package com.workora;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
