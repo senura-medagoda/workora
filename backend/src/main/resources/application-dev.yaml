@@ -6,3 +6,8 @@ spring:
 logging:
   level:
     com.workora: DEBUG
+
+workora:
+  security:
+    jwt-secret: dev-only-secret-change-me-0123456789abcdef
+    cookie-secure: false                # localhost is plain http
