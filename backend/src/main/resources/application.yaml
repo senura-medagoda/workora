@@ -22,3 +22,10 @@ management:
     web:
       exposure:
         include: health,info
+
+workora:
+  security:
+    jwt-secret: ${WORKORA_JWT_SECRET}   # no default on purpose: production must provide it
+    access-token-ttl: 15m
+    refresh-token-ttl: 7d
+    cookie-secure: true                 # cookies only over HTTPS (dev overrides this)
