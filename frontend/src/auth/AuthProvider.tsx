@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 import { apiFetch, refreshSession, setAccessToken, setAuthFailureHandler } from '../api/client'
 import type { AuthResponse, User } from '../api/types'
 import { AuthContext, type AuthContextValue, type Credentials, type RegisterData } from './AuthContext'
@@ -6,11 +7,13 @@ import { AuthContext, type AuthContextValue, type Credentials, type RegisterData
 export function AuthProvider({ children }: { children: ReactNode }) {
     const [user, setUser] = useState<User | null>(null)
     const [loading, setLoading] = useState(true)
+    const queryClient = useQueryClient() // the missing line: gives us access to the data cache
 
     // On app start: try to restore the session from the refresh cookie.
     useEffect(() => {
         setAuthFailureHandler(() => {
             setAccessToken(null)
+            queryClient.clear() // forget the previous user's cached data
             setUser(null)
         })
 
@@ -27,7 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             cancelled = true // StrictMode runs this cleanup, then the effect again; both share ONE refresh promise
             setAuthFailureHandler(null)
         }
-    }, [])
+    }, [queryClient])
 
     const login = useCallback(async (credentials: Credentials) => {
         const data = await apiFetch<AuthResponse>('/auth/login', {
@@ -53,10 +56,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         try {
             await apiFetch<void>('/auth/logout', { method: 'POST' })
         } finally {
-            setAccessToken(null) // even if the server call fails, the user is logged out locally
+            setAccessToken(null)
+            queryClient.clear()
             setUser(null)
         }
-    }, [])
+    }, [queryClient])
 
     const value = useMemo<AuthContextValue>(
         () => ({ user, loading, login, register, logout }),
