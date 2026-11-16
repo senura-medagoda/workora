@@ -31,6 +31,9 @@ workora:
     refresh-token-ttl: 7d
     cookie-secure: true                 # cookies only over HTTPS (dev overrides this)
 
+  security-headers:
+    csp: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
 springdoc:
   api-docs:
     enabled: false

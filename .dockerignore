@@ -1,0 +1,9 @@
+**/node_modules
+**/target
+**/dist
+**/.env
+.git
+.github
+.idea
+docs
+*.log
