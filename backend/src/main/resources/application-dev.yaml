@@ -12,6 +12,9 @@ workora:
     jwt-secret: dev-only-secret-change-me-0123456789abcdef
     cookie-secure: false                # localhost is plain http
 
+  security-headers:
+    csp: ""
+
 springdoc:
   api-docs:
     enabled: true
