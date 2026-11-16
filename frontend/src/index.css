@@ -1,1 +1,79 @@
 @import "tailwindcss";
+
+@theme {
+    --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
+
+    --color-paper: #f4f6f3;
+    --color-surface: #ffffff;
+    --color-ink: #17332c;
+    --color-muted: #5b6b66;
+    --color-line: #dde3de;
+
+    --color-pine-50: #e8f3ef;
+    --color-pine-600: #0e5a47;
+    --color-pine-700: #0b4a3a;
+    --color-pine-900: #0a2f26;
+    --color-marigold: #f5b83d;
+
+    --color-st-applied: #2f5f94;
+    --color-st-interviewing: #9a6700;
+    --color-st-offer: #17744c;
+    --color-st-rejected: #a73a35;
+    --color-st-withdrawn: #66726d;
+}
+
+@layer base {
+    html { scroll-padding-top: 5rem; }
+    body { @apply bg-paper font-sans text-ink antialiased; }
+    h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+    :focus-visible { outline: 2px solid var(--color-pine-600); outline-offset: 2px; }
+    body:has(dialog[open]) { overflow: hidden; }
+    @media (prefers-reduced-motion: no-preference) {
+        html { scroll-behavior: smooth; }
+    }
+}
+
+@layer components {
+    .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60; }
+    .btn-primary { @apply bg-pine-600 text-white hover:bg-pine-700; }
+    .btn-secondary { @apply border border-line bg-surface text-ink hover:bg-paper; }
+    .btn-danger { @apply bg-st-rejected text-white hover:bg-st-rejected/90; }
+    .btn-icon { @apply inline-flex size-9 items-center justify-center rounded-lg text-muted transition-colors hover:bg-paper hover:text-ink; }
+    .field { @apply w-full rounded-lg border border-line bg-surface px-3 py-2.5 text-sm text-ink placeholder:text-muted/70 focus:border-pine-600; }
+    .field[aria-invalid="true"] { @apply border-st-rejected; }
+}
+
+/* ---- native <dialog>: side sheet, centred modal, wide centred modal ---- */
+dialog.sheet, dialog.modal, dialog.modal-wide {
+    padding: 0;
+    border: 0;
+    color: inherit;
+    background: var(--color-surface);
+}
+dialog.sheet {
+    margin: 0 0 0 auto;
+    height: 100dvh; max-height: 100dvh;
+    width: min(100vw, 34rem);
+    box-shadow: -24px 0 48px -24px rgb(10 47 38 / 0.3);
+}
+dialog.modal, dialog.modal-wide {
+    margin: auto;          /* auto margins are what centre a modal dialog */
+    border-radius: 1rem;
+}
+dialog.modal { width: min(calc(100vw - 2rem), 26rem); }
+dialog.modal-wide {
+    width: min(calc(100vw - 2rem), 40rem);
+    max-height: calc(100dvh - 2rem);
+}
+dialog::backdrop { background: rgb(10 47 38 / 0.5); }
+
+/* motion only in response to an action, and only if the user allows motion */
+@media (prefers-reduced-motion: no-preference) {
+    dialog.sheet[open] { animation: sheet-in 0.22s ease-out; }
+    dialog.modal[open], dialog.modal-wide[open] { animation: modal-in 0.18s ease-out; }
+    .reveal { animation: rise 0.5s ease-out both; animation-delay: calc(var(--i, 0) * 90ms); }
+}
+@keyframes sheet-in { from { transform: translateX(2rem); opacity: 0; } }
+@keyframes modal-in { from { transform: scale(0.97); opacity: 0; } }
+@keyframes rise { from { transform: translateY(8px); opacity: 0; } }

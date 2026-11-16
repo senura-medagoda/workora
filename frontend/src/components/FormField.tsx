@@ -1,24 +1,23 @@
-import type { ComponentProps } from 'react'
+import type { ReactNode } from 'react'
 
-type Props = ComponentProps<'input'> & { label: string; error?: string }
+interface Props {
+    label: string
+    htmlFor: string
+    error?: string
+    hint?: string
+    children: ReactNode
+}
 
-export function FormField({ label, error, id, ...inputProps }: Props) {
-    const inputId = id ?? inputProps.name
+export function FormField({ label, htmlFor, error, hint, children }: Props) {
     return (
         <div>
-            <label htmlFor={inputId} className="mb-1 block text-sm font-medium text-slate-700">
+            <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-medium">
                 {label}
             </label>
-            <input
-                id={inputId}
-                aria-invalid={!!error}
-                className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-500 ${
-                    error ? 'border-red-500' : 'border-slate-300'
-                }`}
-                {...inputProps}
-            />
+            {children}
+            {hint && !error && <p className="mt-1.5 text-sm text-muted">{hint}</p>}
             {error && (
-                <p role="alert" className="mt-1 text-sm text-red-600">
+                <p role="alert" className="mt-1.5 text-sm text-st-rejected">
                     {error}
                 </p>
             )}
