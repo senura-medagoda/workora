@@ -64,16 +64,16 @@
 
 ## Tech stack
 
-| Layer | Technology |
-|---|---|
-| **Backend** | Java 21, **Spring Boot 4.1**, Spring Security 7 (OAuth2 resource server), Spring Data JPA / Hibernate, Bean Validation, Spring Boot Actuator, Lombok |
-| **Database** | PostgreSQL, **Flyway** migrations |
-| **Testing** | **JUnit 5**, **Mockito**, AssertJ, Spring MockMvc, **Testcontainers** |
-| **Frontend** | React, TypeScript, Vite, Tailwind CSS, TanStack Query, React Hook Form, Zod |
-| **Containers** | Docker (multi-stage build), Docker Compose for local development |
-| **CI/CD** | GitHub Actions |
-| **Hosting** | Render (Docker web service), Neon (managed PostgreSQL) |
-| **API docs** | OpenAPI / Swagger UI (development only) |
+| Layer | Technology                                                                                                                                             |
+|---|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Backend** | Java 21, **Spring Boot 4.1.2**, Spring Security 7 (OAuth2 resource server), Spring Data JPA / Hibernate, Bean Validation, Spring Boot Actuator, Lombok |
+| **Database** | PostgreSQL, **Flyway** migrations                                                                                                                      |
+| **Testing** | **JUnit 5**, **Mockito**, AssertJ, Spring MockMvc, **Testcontainers**                                                                                  |
+| **Frontend** | React, TypeScript, Vite, Tailwind CSS, TanStack Query, React Hook Form, Zod                                                                            |
+| **Containers** | Docker (multi-stage build), Docker Compose for local development                                                                                       |
+| **CI/CD** | GitHub Actions                                                                                                                                         |
+| **Hosting** | Render (Docker web service), Neon (managed PostgreSQL)                                                                                                 |
+| **API docs** | OpenAPI / Swagger UI (development only)                                                                                                                |
 
 ---
 
