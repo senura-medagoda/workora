@@ -1,17 +1,23 @@
 server:
-  port: ${PORT:8080}                  # hosts like Render tell the app which port to use
-  forward-headers-strategy: framework # trust the proxy's "this was HTTPS" header (needed for HSTS and secure cookies)
+  port: ${PORT:8080}
+  forward-headers-strategy: framework
   shutdown: graceful
 
 spring:
   docker:
     compose:
-      enabled: false                  # no Docker Compose in production
+      enabled: false
   datasource:
     hikari:
-      maximum-pool-size: 5            # small pool for a small free database
-      minimum-idle: 0                 # don't hold idle connections: the free DB sleeps
-      max-lifetime: 240000            # recycle connections every 4 minutes
+      maximum-pool-size: 5
+      minimum-idle: 0
+      max-lifetime: 240000
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
 
 workora:
   security:
