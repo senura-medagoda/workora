@@ -442,7 +442,7 @@ cd ../frontend && npm run lint && npm run build
 
 ## Author
 
-**YOUR NAME**  
+**Senura Medagoda**  
 [LinkedIn](https://www.linkedin.com/in/senura-medagoda) · [GitHub](https://github.com/senura-medagoda) · medagoda.senura@gmail.com
 
 If you are reviewing this project, the most interesting places to start are `backend/src/main/java/com/workora/auth` (token rotation), `backend/src/test` (the test suite) and the `Dockerfile`.
