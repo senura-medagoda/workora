@@ -4,7 +4,7 @@
 
 **A secure, full-stack job application tracker, built with Java 21 and Spring Boot 4, tested with JUnit 5 and Testcontainers, containerized with Docker and deployed through a CI/CD pipeline.**
 
-[![CI](https://github.com/YOUR-USERNAME/workora/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR-USERNAME/workora/actions/workflows/ci.yml)
+[![CI](https://github.com/senura-medagoda/workora/actions/workflows/ci.yml/badge.svg)](https://github.com/senura-medagoda/workora/actions/workflows/ci.yml)
 ![Java](https://img.shields.io/badge/Java-21-orange)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1-6DB33F)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Flyway-336791)
@@ -362,10 +362,6 @@ Interactive documentation (Swagger UI) is available in development at `http://lo
 | PATCH | `/api/v1/applications/{id}/status` | Change only the status |
 | DELETE | `/api/v1/applications/{id}` | Delete an application |
 
-<!-- 📸 SCREENSHOT 12: docs/screenshots/swagger-ui.png
-     Swagger UI (local, http://localhost:8080/swagger-ui.html) with the "Job applications" endpoints visible
-     and the green Authorize button at the top. -->
-![Swagger UI](docs/screenshots/swagger-ui.png)
 
 ---
 
